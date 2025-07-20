@@ -9,4 +9,13 @@ endif()
 
 add_library(utils INTERFACE)
 
+install(TARGETS utils
+		EXPORT libTargets
+		LIBRARY DESTINATION lib
+		ARCHIVE DESTINATION lib
+		RUNTIME DESTINATION bin
+		INCLUDES DESTINATION include)
+
+install(DIRECTORY include/ DESTINATION include)
+
 set(LIB_TARGETS utils PARENT_SCOPE)
