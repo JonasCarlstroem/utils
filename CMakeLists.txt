@@ -7,15 +7,12 @@ if(MSVC)
 	add_compile_options(/Zc:__cplusplus)
 endif()
 
-add_library(utils INTERFACE)
+#add_library(utils INTERFACE)
+CREATE_LIB(utils INTERFACE)
 
-install(TARGETS utils
-		EXPORT libTargets
-		LIBRARY DESTINATION lib
-		ARCHIVE DESTINATION lib
-		RUNTIME DESTINATION bin
-		INCLUDES DESTINATION include)
+target_include_directories(utils INTERFACE 
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+	$<INSTALL_INTERFACE:include/utils>
+)
 
-install(DIRECTORY include/ DESTINATION include)
-
-set(LIB_TARGETS utils PARENT_SCOPE)
+INSTALL_LIB(utils True utils)

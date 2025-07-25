@@ -1,6 +1,13 @@
 #pragma once
 #include <string>
-#include <winsock.h>
+
+#ifndef _WINSOCK_INCLUDED_
+#define _WINSOCK_INCLUDED_
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+
+#pragma comment(lib, "Ws2_32.lib")
+#endif
 
 #define DEFAULT_IP "0.0.0.0"
 #define DEFAULT_PORT 8080
